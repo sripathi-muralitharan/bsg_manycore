@@ -621,13 +621,16 @@ if (enable_profiling_p) begin
     ,.trace_en_i($root.`HOST_MODULE_PATH.trace_en)
   );
 
+  end
+
   // Functional Coverage
-  bind vanilla_core bsg_nonsynth_manycore_vanilla_core_pc_cov
-    #(.icache_tag_width_p(icache_tag_width_p)
-      ,.icache_entries_p(icache_entries_p)
-      )
-      pc_cov
-      (.coverage_en_i($root.`HOST_MODULE_PATH.vanilla_pc_cov_en)
-      ,.*);
+  bind vanilla_core bsg_nonsynth_manycore_vanilla_core_pc_cov #(
+    .icache_tag_width_p(icache_tag_width_p)
+    ,.icache_entries_p(icache_entries_p)
+  )
+  pc_cov (
+    .*
+    ,.coverage_en_i($root.`HOST_MODULE_PATH.vanilla_pc_cov_en)
+  );
 
 endmodule
