@@ -37,7 +37,8 @@ regress: clean
 summary:
 	@$(foreach test, $(TESTS), echo $(notdir $(test)); \
 			echo "--------------------------------------------------"; \
-	    grep --color -e "BSG_FINISH" -e "BSG_FATAL" -e "Error" -e "BSG_ERROR" -e "BSG_FAIL" -B 1 $(test)_run/$(test)_run.log;)
+	    grep --color -e "BSG_FINISH" -e "BSG_FATAL" -e "Error" -e "BSG_ERROR" -e "BSG_FAIL" -B 1 $(test)_run/$(test)_run.log; \
+			echo ;)
 
 clean.run:
 	rm -rf *run/
